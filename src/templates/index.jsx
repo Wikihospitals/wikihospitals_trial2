@@ -21,13 +21,6 @@ export default (props) => {
         image={data.hero.url}
       />
 
-      {/* <Hero
-        image={data.hero}
-        tag="#wikihospitals"
-        title="Wiki Hospitals"
-        description="A site that displays the latest in international health technology along with blog posts about patients stories."
-      /> */}
-
       <Cards nodes={data.items.nodes} />
 
           <div className="container pt-6 overflow-hidden">
@@ -40,11 +33,7 @@ export default (props) => {
                   )}
                 </div>
                 <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6">
-                    {/* {Array.from({ length: numPages }, (_, i) => (
-                        <Link key={`pagination-number${i + 1}`} to={`/${i === 0 ? "" : i + 1}`}>
-                        {i + 1}
-                        </Link>
-                    ))} */}
+                    &nbsp;
                 </div>
                 <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6">
                 {!isLast && (

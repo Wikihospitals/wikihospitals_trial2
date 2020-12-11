@@ -1,13 +1,9 @@
-//import { graphql } from "gatsby"
-//import Img from "gatsby-image"
 import { Link } from "gatsby-plugin-modal-routing"
 import PropTypes from "prop-types"
 import React from "react"
-import { Feature } from "."
 
 export const Card = (props) => {
   const {
-    country,
     name,
     navigation,
     slug,
@@ -18,9 +14,11 @@ export const Card = (props) => {
   return (
     <div className="bg-white dark:bg-blue-900 h-full shadow-sm rounded-md overflow-hidden hover:bg-blue-100 dark:hover:bg-blue-800">
       <Link to={`/${slug}`} state={{ navigation }} asModal={false}>
+        { image && 
         <div className="bg-blue-300">
           <img src={image[0].url} alt={name} />
         </div>
+        }
         <div className="p-5 pb-1">
           <h1 className="text-2xl text-blue-500 dark:text-blue-300 font-bold leading-snug">
             {name}
@@ -28,7 +26,6 @@ export const Card = (props) => {
           <p className="text-base text-blue-900 dark:text-blue-400 mb-5 font-medium text c-box-text">
             {description}
           </p>
-          {/* <Feature label="Country" value={country} /> */}
         </div>
       </Link>
     </div>
@@ -50,14 +47,3 @@ Card.defaultProps = {
   navigation: {},
 }
 
-// export const query = graphql`
-//   fragment CardImageFragment on AirtableField {
-//     localFiles {
-//       childImageSharp {
-//         fluid(maxWidth: 640, maxHeight: 420, cropFocus: NORTH) {
-//           ...GatsbyImageSharpFluid_withWebp
-//         }
-//       }
-//     }
-//   }
-// `

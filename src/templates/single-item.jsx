@@ -1,5 +1,4 @@
 import { graphql } from "gatsby"
-//import Img from "gatsby-image"
 import React from "react"
 import { Feature } from "../components"
 import { useModal } from "../context"
@@ -31,18 +30,17 @@ export default (props) => {
   
   return (
     <Layout navigation={navigation}>
-     {/* <SiteMetadata title={name} description={summary} image={cover.url} /> */}
       <article className={modal && "max-h-80vh md:max-h-90vh overflow-auto"}>
         <div className={modal ? "p-4 lg:p-8" : "container py-8"}>
 
           <h1 className="pb-4 text-center text-2xl lg:text-3xl text-blue-500 dark:text-blue-400 font-bold leading-tight">
-            <a href={url} target="_blank">{name}</a>
+            <a href={url} target="_blank" rel="noreferrer" >{name}</a>
           </h1>
-
+          { image && 
           <div className="mb-10 flex flex-wrap">
             <img className="c-img mx-auto" src={image[0].url} alt={name} />
           </div>
-
+          }
           <p className="mb-10 whitespace-pre-line text-sm lg:text-base leading-normal text-blue-900 dark:text-blue-600">
             {description}
           </p>
@@ -50,7 +48,7 @@ export default (props) => {
           { youtube && 
             <div className="mb-20 flex flex-wrap">
               
-                <a href={youtube} target="_blank" className="mx-auto"><img className="c-img" src={`https://img.youtube.com/vi/${youtube.replace("https://youtu.be/","")}/0.jpg`} alt={name} /></a>
+                <a href={youtube} target="_blank" className="mx-auto" rel="noreferrer" ><img className="c-img" src={`https://img.youtube.com/vi/${youtube.replace("https://youtu.be/","")}/0.jpg`} alt={name} /></a>
               
             </div>
           }
@@ -92,10 +90,9 @@ export default (props) => {
 }
 
 export const query = graphql`
-  query SingleItemQuery($slug: String!) {
+  query SingleItemQuery($slug: String) {
     item: airtable(data: { slug: { eq: $slug } }) {
       data {
-        slug
         name : Company_title
         url : Website
         image {
