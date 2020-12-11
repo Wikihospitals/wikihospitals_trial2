@@ -40,6 +40,11 @@ exports.createPages = ({ graphql, actions }) => {
       })
 
       data.allAirtable.nodes.map(({ data: { slug } }) => {
+
+        var slug = slug.replace("?", "").trim()
+
+        //console.log(slug)
+
         createPage({
           component,
           context: { slug },
