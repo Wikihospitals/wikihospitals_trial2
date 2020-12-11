@@ -35,7 +35,7 @@ export default (props) => {
                 <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6">
                     &nbsp;
                 </div>
-                <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6">
+                <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6 sm:text-left">
                 {!isLast && (
                       <Link to={`/${nextPage}`} rel="next">
                           Next Page →

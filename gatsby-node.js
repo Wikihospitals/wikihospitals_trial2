@@ -29,7 +29,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
-          path: i === 0 ? `/` : `/${i + 1}`,
+          path: i === 0 ? `/page` : `/page/${i + 1}`,
           component: path.resolve(`./src/templates/index.jsx`),
           context: {
             limit: postsPerPage,
