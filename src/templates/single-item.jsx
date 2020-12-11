@@ -93,9 +93,9 @@ export default (props) => {
 
 export const query = graphql`
   query SingleItemQuery($slug: String!) {
-    item: airtable(data: { Company_title: { eq: $slug } }) {
+    item: airtable(data: { slug: { eq: $slug } }) {
       data {
-        slug : Company_title
+        slug
         name : Company_title
         url : Website
         image {

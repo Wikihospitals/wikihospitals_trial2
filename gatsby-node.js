@@ -11,12 +11,13 @@ exports.createPages = ({ graphql, actions }) => {
         allAirtable(filter: { table: { eq: "${tableName}" } }) {
           nodes {
             data {
-              slug : Company_title
+              slug
             }
           }
         }
       }
     `).then(({ errors, data }) => {
+
       if (errors) {
         reject(errors)
       }
@@ -40,11 +41,6 @@ exports.createPages = ({ graphql, actions }) => {
       })
 
       data.allAirtable.nodes.map(({ data: { slug } }) => {
-
-        var slug = slug.replace("?", "").trim()
-
-        //console.log(slug)
-
         createPage({
           component,
           context: { slug },

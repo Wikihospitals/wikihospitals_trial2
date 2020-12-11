@@ -74,7 +74,7 @@ export const query = graphql`
         data {
           country : Country_of_origin
           name : Company_title
-          slug : Company_title
+          slug
           description : Description
           image {
             url
