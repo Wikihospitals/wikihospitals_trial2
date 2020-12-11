@@ -1,0 +1,33 @@
+@tailwind base;
+
+body {
+  @apply font-sans antialiased;
+}
+
+body.ReactModal__Body--open > div[aria-hidden="true"] {
+  filter: blur(10px);
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+.grayscale-1 {
+  filter: grayscale(1);
+}
+
+.blend-multiply {
+  mix-blend-mode: multiply;
+}
+
+.c-box-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.0rem;
+}
+
+.c-img {
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 80px;
+}
