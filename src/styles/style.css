@@ -31,3 +31,34 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   border-radius: 0;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 80px;
 }
+.sok {
+  padding: 40px 0;
+  text-align: center;
+}
+.form-input {
+  position: relative;
+  margin:0 auto;
+  width: 90%;
+  height: 60px;
+  border: none;
+  padding: 0 10px;
+  box-shadow: none;
+  outline: none;
+  -webkit-transition: all .5s ease;
+     -moz-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+       -o-transition: all .5s ease;
+          transition: all .5s ease;
+          text-align: center;
+}
+.form-input.smooth-corner {
+  border-radius: 2px;
+}
+.form-input.spread-shadow {
+  border: 1px solid rgba(0, 0, 0, .15);
+}
+.form-input.spread-shadow:focus {
+  background: #fff;
+  box-shadow: 0 0 40px 5px rgba(0, 0, 0, .2);
+}
+

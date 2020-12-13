@@ -12,6 +12,8 @@ exports.createPages = ({ graphql, actions }) => {
           nodes {
             data {
               slug
+              name : Company_title
+              description : Description
             }
           }
         }
@@ -29,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
-          path: i === 0 ? `/page` : `/page/${i + 1}`,
+          path: i === 0 ? `/` : `/page/${i + 1}`,
           component: path.resolve(`./src/templates/index.jsx`),
           context: {
             limit: postsPerPage,
@@ -39,13 +41,30 @@ exports.createPages = ({ graphql, actions }) => {
           },
         })
       })
-
+      
       data.allAirtable.nodes.map(({ data: { slug } }) => {
         createPage({
           component,
           context: { slug },
           path: `/${slug}`,
         })
+      })
+
+      createPage({
+        path: "/search",
+        component: path.resolve(`./src/templates/ClientSearchTemplate.js`),
+        context: {
+          bookData: {
+            allBooks: data.allAirtable.nodes,
+            options: {
+              indexStrategy: "Prefix match",
+              searchSanitizer: "Lower Case",
+              TitleIndex: true,
+              AuthorIndex: true,
+              SearchByTerm: true,
+            },
+          },
+        },
       })
 
       resolve()

@@ -34,7 +34,7 @@ export default (props) => {
         <div className={modal ? "p-4 lg:p-8" : "container py-8"}>
 
           <h1 className="pb-4 text-center text-2xl lg:text-3xl text-blue-500 dark:text-blue-400 font-bold leading-tight">
-            <a href={url} target="_blank" rel="noreferrer" title={name} >{name}</a>
+            <a href={url} target="_blank" rel="noreferrer" title={url} >{name}</a>
           </h1>
 
           { image && 
@@ -42,7 +42,7 @@ export default (props) => {
             <img className="c-img mx-auto" src={image[0].url} alt={name} />
           </div>
           }
-          
+
           <p className="mb-10 whitespace-pre-line text-sm lg:text-base leading-normal text-blue-900 dark:text-blue-600">
             {description}
           </p>

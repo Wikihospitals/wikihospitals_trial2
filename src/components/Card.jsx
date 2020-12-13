@@ -33,14 +33,12 @@ export const Card = (props) => {
 }
 
 Card.propTypes = {
-  country: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     current: PropTypes.number,
     items: PropTypes.arrayOf(PropTypes.string),
   }),
   slug: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
 }
 
 Card.defaultProps = {
