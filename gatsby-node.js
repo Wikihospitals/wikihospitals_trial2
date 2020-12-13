@@ -70,47 +70,59 @@ exports.createPages = ({ graphql, actions }) => {
 
       data.allAirtable.nodes.map(
         ({ data: { slug, ms, md, te, pd, cm, cn } }) => {
-          ms?.forEach((item) => {
-            if (!mapMS.has(item)) {
-              mapMS.set(item, true)
-              arrayMS.push({ value: item, label: item })
-            }
-          })
+          if (ms) {
+            ms.forEach((item) => {
+              if (!mapMS.has(item)) {
+                mapMS.set(item, true)
+                arrayMS.push({ value: item, label: item })
+              }
+            })
+          }
 
-          md?.forEach((item) => {
-            if (!mapMD.has(item)) {
-              mapMD.set(item, true)
-              arrayMD.push({ value: item, label: item })
-            }
-          })
+          if (md) {
+            md?.forEach((item) => {
+              if (!mapMD.has(item)) {
+                mapMD.set(item, true)
+                arrayMD.push({ value: item, label: item })
+              }
+            })
+          }
 
-          te?.forEach((item) => {
-            if (!mapTE.has(item)) {
-              mapTE.set(item, true)
-              arrayTE.push({ value: item, label: item })
-            }
-          })
+          if (te) {
+            te?.forEach((item) => {
+              if (!mapTE.has(item)) {
+                mapTE.set(item, true)
+                arrayTE.push({ value: item, label: item })
+              }
+            })
+          }
 
-          pd?.forEach((item) => {
-            if (!mapPD.has(item)) {
-              mapPD.set(item, true)
-              arrayPD.push({ value: item, label: item })
-            }
-          })
+          if (pd) {
+            pd?.forEach((item) => {
+              if (!mapPD.has(item)) {
+                mapPD.set(item, true)
+                arrayPD.push({ value: item, label: item })
+              }
+            })
+          }
 
-          cm?.forEach((item) => {
-            if (!mapCM.has(item)) {
-              mapCM.set(item, true)
-              arrayCM.push({ value: item, label: item })
-            }
-          })
+          if (cm) {
+            cm?.forEach((item) => {
+              if (!mapCM.has(item)) {
+                mapCM.set(item, true)
+                arrayCM.push({ value: item, label: item })
+              }
+            })
+          }
 
-          cn?.forEach((item) => {
-            if (!mapCN.has(item)) {
-              mapCN.set(item, true)
-              arrayCN.push({ value: item, label: item })
-            }
-          })
+          if (cn) {
+            cn?.forEach((item) => {
+              if (!mapCN.has(item)) {
+                mapCN.set(item, true)
+                arrayCN.push({ value: item, label: item })
+              }
+            })
+          }
 
           createPage({
             component,
