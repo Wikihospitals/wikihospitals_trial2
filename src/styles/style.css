@@ -31,6 +31,22 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   border-radius: 0;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 80px;
 }
+.soklink {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  padding: 0  10px 10px 10px;
+  text-decoration:underline;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+}
+.soklink:hover {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+}
 .sok {
   padding: 40px 0;
   text-align: center;

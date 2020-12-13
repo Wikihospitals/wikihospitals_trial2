@@ -15,11 +15,18 @@ export default (props) => {
     
   return (
     <Layout>
+
       <SiteMetadata
         title="Wiki Hospitals"
         description="A site that displays the latest in international health technology along with blog posts about patients stories."
         image={data.hero.url}
       />
+
+      <div className="container pt-6 overflow-hidden">
+        <h1 style={{ marginTop: `3em`, textAlign: `left` }}>
+          A site that displays the latest in international health technology along with blog posts about patients stories.
+        </h1>
+      </div>
 
       <Cards nodes={data.items.nodes} />
 

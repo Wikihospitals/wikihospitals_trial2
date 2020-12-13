@@ -14,11 +14,11 @@ export const Card = (props) => {
   return (
     <div className="bg-white dark:bg-blue-900 h-full shadow-sm rounded-md overflow-hidden hover:bg-blue-100 dark:hover:bg-blue-800">
       <Link to={`/${slug}`} state={{ navigation }} asModal={false}>
-        { image && 
+        {/* { image && 
         <div className="bg-blue-300">
           <img src={image[0].url} alt={name} />
         </div>
-        }
+        } */}
         <div className="p-5 pb-1">
           <h1 className="text-2xl text-blue-500 dark:text-blue-300 font-bold leading-snug">
             {name}

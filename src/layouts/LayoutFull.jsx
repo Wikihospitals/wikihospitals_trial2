@@ -17,8 +17,8 @@ export const LayoutFull = ({ children }) => {
             <div className="flex w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6">
               &nbsp;
             </div>
-            <div className="flex w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6">
-              <Link to="/search" className="inline-block">Search</Link>
+            <div className="flex w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 justify-center items-end">
+              <Link to="/search" className="soklink">Search</Link>
             </div>
           </div>
         </div>

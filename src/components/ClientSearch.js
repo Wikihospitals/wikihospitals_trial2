@@ -103,13 +103,14 @@ class ClientSearch extends Component {
     const queryResult = search.search(e.target.value)
     this.setState({ searchQuery: e.target.value, searchResults: queryResult })
   }
+
   handleSubmit = e => {
     e.preventDefault()
   }
+  
   render() {
     const { searchResults, searchQuery } = this.state
     const { nodes } = this.props
-    
     const queryResults = searchQuery === "" ? [] : searchResults
 
     return (
