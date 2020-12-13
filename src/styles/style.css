@@ -20,10 +20,10 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   mix-blend-mode: multiply;
 }
 
-.c-box-text{
+.c-box-text {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 3.0rem;
+  max-height: 3rem;
 }
 
 .c-img {
@@ -35,21 +35,24 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   display: inline-block;
   width: 100%;
   text-align: right;
-  padding: 0  10px 10px 10px;
-  text-decoration:underline;
-  -webkit-transition: all .3s ease;
-     -moz-transition: all .3s ease;
-      -ms-transition: all .3s ease;
-       -o-transition: all .3s ease;
-          transition: all .3s ease;
+  padding: 0 10px 10px 10px;
+  text-decoration: underline;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .soklink:hover {
   color: rgba(107, 114, 128, var(--tw-text-opacity));
-  -webkit-transition: all .3s ease;
-     -moz-transition: all .3s ease;
-      -ms-transition: all .3s ease;
-       -o-transition: all .3s ease;
-          transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.csok {
+  min-height: 500px;
 }
 .sok {
   padding: 40px 0;
@@ -57,28 +60,48 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
 }
 .form-input {
   position: relative;
-  margin:0 auto;
+  margin: 0 auto;
   width: 90%;
   height: 60px;
   border: none;
   padding: 0 10px;
   box-shadow: none;
   outline: none;
-  -webkit-transition: all .5s ease;
-     -moz-transition: all .5s ease;
-      -ms-transition: all .5s ease;
-       -o-transition: all .5s ease;
-          transition: all .5s ease;
-          text-align: center;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  text-align: center;
 }
 .form-input.smooth-corner {
   border-radius: 2px;
 }
 .form-input.spread-shadow {
-  border: 1px solid rgba(0, 0, 0, .15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 .form-input.spread-shadow:focus {
   background: #fff;
-  box-shadow: 0 0 40px 5px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.2);
 }
-
+.filterc1 {
+  z-index: 9000;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.filterc2 {
+  z-index: 900;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.filterc3 {
+  z-index: 90;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.select__option {
+  color: #000;
+}

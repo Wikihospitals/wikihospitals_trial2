@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import * as JsSearch from "js-search"
 import { Scard } from "."
+import SingleSelect from "../components/SingleSelect"
 
 class ClientSearch extends Component {
   state = {
@@ -8,6 +9,12 @@ class ClientSearch extends Component {
     searchResults: [],
     search: null,
     isError: false,
+    indexByMS: false,
+    indexByMD: false,
+    indexByTE: false,
+    indexByPD: false,
+    indexByCM: false,
+    indexByCN: false,
     indexByTitle: false,
     indexByAuthor: false,
     termFrequency: true,
@@ -15,6 +22,7 @@ class ClientSearch extends Component {
     searchQuery: "",
     selectedStrategy: "",
     selectedSanitizer: "",
+    filterValue: "",
   }
   /**
    * React lifecycle method that will inject the data into the state.
@@ -23,6 +31,12 @@ class ClientSearch extends Component {
     if (prevState.search === null) {
       const { engine } = nextProps
       return {
+        indexByMS: engine.MSIndex,
+        indexByMD: engine.MDIndex,
+        indexByTE: engine.TEIndex,
+        indexByPD: engine.PDIndex,
+        indexByCM: engine.CMIndex,
+        indexByCN: engine.CNIndex,
         indexByTitle: engine.TitleIndex,
         indexByAuthor: engine.AuthorIndex,
         termFrequency: engine.SearchByTerm,
@@ -33,6 +47,7 @@ class ClientSearch extends Component {
     return null
   }
   async componentDidMount() {
+    console.log(1)
     this.rebuildIndex()
   }
 
@@ -47,6 +62,12 @@ class ClientSearch extends Component {
       termFrequency,
       indexByTitle,
       indexByAuthor,
+      indexByMS,
+      indexByMD,
+      indexByTE,
+      indexByPD,
+      indexByCM,
+      indexByCN,
     } = this.state
     const { nodes } = this.props
 
@@ -90,8 +111,32 @@ class ClientSearch extends Component {
     if (indexByAuthor) {
       dataToSearch.addIndex("description")
     }
-    
-    dataToSearch.addDocuments(nodes.map(i=> i.data)) // adds the data to be searched
+    // sets the index attribute for the data
+    if (indexByMS) {
+      dataToSearch.addIndex("ms")
+    }
+    // sets the index attribute for the data
+    if (indexByMD) {
+      dataToSearch.addIndex("md")
+    }
+    // sets the index attribute for the data
+    if (indexByPD) {
+      dataToSearch.addIndex("pd")
+    }
+    // sets the index attribute for the data
+    if (indexByTE) {
+      dataToSearch.addIndex("te")
+    }
+    // sets the index attribute for the data
+    if (indexByCM) {
+      dataToSearch.addIndex("cm")
+    }
+    // sets the index attribute for the data
+    if (indexByCN) {
+      dataToSearch.addIndex("cn")
+    }
+
+    dataToSearch.addDocuments(nodes.map((i) => i.data)) // adds the data to be searched
 
     this.setState({ search: dataToSearch, isLoading: false })
   }
@@ -99,24 +144,24 @@ class ClientSearch extends Component {
    * handles the input change and perform a search with js-search
    * in which the results will be added to the state
    */
-  searchData = e => {
+  searchData = (e) => {
     const { search } = this.state
     const queryResult = search.search(e.target.value)
     this.setState({ searchQuery: e.target.value, searchResults: queryResult })
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault()
   }
 
   render() {
     const { searchResults, searchQuery } = this.state
-    const { nodes } = this.props
+    const { nodes, ms, md, te, pd, cm, cn } = this.props
     const queryResults = searchQuery === "" ? [] : searchResults
 
     return (
       <>
-        <div className="container pb-6 overflow-hidden">
+        <div className="container pb-6 overflow-hidden csok">
           <form onSubmit={this.handleSubmit}>
             <div className="sok">
               <input
@@ -127,112 +172,84 @@ class ClientSearch extends Component {
                 className="form-input smooth-corner spread-shadow"
               />
             </div>
-          </form>
-          {queryResults.length > 0 && 
-            <div>
-            <h1 style={{ textAlign: `center` }}>
-              Number of items:
-              {queryResults.length}
-            </h1>
 
-            <div className="container pt-6 overflow-hidden">
-              <div className="flex flex-wrap -mx-3 xl:-mx-6">
-                {queryResults.map((item, i) => (
-                  <div
-                    className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6"
-                    key={`card_${item.slug}`}
-                  >
-                    <Scard
-                      {...item}
-                    />
-                  </div>
-                ))}
+            <div className="flex flex-wrap">
+              <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
+                <div className="filterc1">
+                  <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
+                    Medical specialty
+                  </h4>
+                  <SingleSelect options={ms} />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
+                <div className="filterc1">
+                  <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
+                    Major disease
+                  </h4>
+                  <SingleSelect options={md} />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
+                <div className="filterc2">
+                  <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
+                    Technology used
+                  </h4>
+                  <SingleSelect options={te} />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
+                <div className="filterc2">
+                  <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
+                    Product type
+                  </h4>
+                  <SingleSelect options={pd} />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
+                <div className="filterc3">
+                  <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
+                    Intended customer
+                  </h4>
+                  <SingleSelect options={cm} />
+                </div>
+              </div>
+
+              <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
+                <div className="filterc3">
+                  <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
+                    Country of origin
+                  </h4>
+                  <SingleSelect options={cn} />
+                </div>
               </div>
             </div>
+          </form>
+          {queryResults.length > 0 && (
+            <div>
+              <h1 style={{ textAlign: `center` }}>
+                Number of items:
+                {queryResults.length}
+              </h1>
 
-            {/* <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                borderRadius: "4px",
-                border: "1px solid #d3d3d3",
-              }}
-            >
-              <thead style={{ border: "1px solid #808080" }}>
-                <tr>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "5px",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      borderBottom: "2px solid #d3d3d3",
-                      cursor: "pointer",
-                    }}
-                  >
-                    No
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "5px",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      borderBottom: "2px solid #d3d3d3",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Title
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "5px",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      borderBottom: "2px solid #d3d3d3",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {queryResults.map((item, i) => {
-                  return (
-                    <tr key={`row_${item.slug}_${i}`}>
-                      <td
-                        style={{
-                          fontSize: "14px",
-                          border: "1px solid #d3d3d3",
-                        }}
-                      >
-                        {(i + 1)}
-                      </td>
-                      <td
-                        style={{
-                          fontSize: "14px",
-                          border: "1px solid #d3d3d3",
-                        }}
-                      >
-                        {item.name}
-                      </td>
-                      <td
-                        style={{
-                          fontSize: "14px",
-                          border: "1px solid #d3d3d3",
-                        }}
-                      >
-                        {item.description}
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table> */}
-          </div>
-          }
+              <div className="container pt-6 overflow-hidden">
+                <div className="flex flex-wrap -mx-3 xl:-mx-6">
+                  {queryResults.map((item, i) => (
+                    <div
+                      className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6"
+                      key={`card_${item.slug}`}
+                    >
+                      <Scard {...item} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </>
     )
