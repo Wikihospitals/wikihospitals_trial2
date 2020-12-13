@@ -80,7 +80,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (md) {
-            md?.forEach((item) => {
+            md.forEach((item) => {
               if (!mapMD.has(item)) {
                 mapMD.set(item, true)
                 arrayMD.push({ value: item, label: item })
@@ -89,7 +89,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (te) {
-            te?.forEach((item) => {
+            te.forEach((item) => {
               if (!mapTE.has(item)) {
                 mapTE.set(item, true)
                 arrayTE.push({ value: item, label: item })
@@ -98,7 +98,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (pd) {
-            pd?.forEach((item) => {
+            pd.forEach((item) => {
               if (!mapPD.has(item)) {
                 mapPD.set(item, true)
                 arrayPD.push({ value: item, label: item })
@@ -107,7 +107,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (cm) {
-            cm?.forEach((item) => {
+            cm.forEach((item) => {
               if (!mapCM.has(item)) {
                 mapCM.set(item, true)
                 arrayCM.push({ value: item, label: item })
@@ -116,7 +116,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (cn) {
-            cn?.forEach((item) => {
+            cn.forEach((item) => {
               if (!mapCN.has(item)) {
                 mapCN.set(item, true)
                 arrayCN.push({ value: item, label: item })
