@@ -144,10 +144,6 @@ class ClientSearch extends Component {
                   >
                     <Scard
                       {...item}
-                      navigation={{
-                        current: i,
-                        items: nodes.map((item) => `/${item.slug}`),
-                      }}
                     />
                   </div>
                 ))}

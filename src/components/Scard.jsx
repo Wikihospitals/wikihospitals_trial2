@@ -1,11 +1,9 @@
-import { Link } from "gatsby-plugin-modal-routing"
 import PropTypes from "prop-types"
 import React from "react"
 
-export const Card = (props) => {
+export const Scard = (props) => {
   const {
     name,
-    navigation,
     slug,
     description,
     image
@@ -13,7 +11,7 @@ export const Card = (props) => {
 
   return (
     <div className="bg-white dark:bg-blue-900 h-full shadow-sm rounded-md overflow-hidden hover:bg-blue-100 dark:hover:bg-blue-800">
-      <Link to={`/${slug}`} state={{ navigation }} asModal={false}>
+      <a href={`/${slug}`} >
         { image && 
         <div className="bg-blue-300">
           <img className="lazyload" data-src={image[0].url} alt={name} />
@@ -27,21 +25,12 @@ export const Card = (props) => {
             {description}
           </p>
         </div>
-      </Link>
+      </a>
     </div>
   )
 }
 
-Card.propTypes = {
+Scard.propTypes = {
   name: PropTypes.string.isRequired,
-  navigation: PropTypes.shape({
-    current: PropTypes.number,
-    items: PropTypes.arrayOf(PropTypes.string),
-  }),
   slug: PropTypes.string.isRequired,
 }
-
-Card.defaultProps = {
-  navigation: {},
-}
-

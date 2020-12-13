@@ -58,7 +58,7 @@ exports.createPages = ({ graphql, actions }) => {
         component: path.resolve(`./src/templates/ClientSearchTemplate.js`),
         context: {
           bookData: {
-            allBooks: data.allAirtable.nodes.slice(1, 9),
+            allBooks: data.allAirtable.nodes,
             options: {
               indexStrategy: "Prefix match",
               searchSanitizer: "Lower Case",
