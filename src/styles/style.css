@@ -37,15 +37,19 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   text-align: right;
   padding: 0  10px 10px 10px;
   text-decoration:underline;
-  transition-property: all;
-  transition-duration: .2s;
-  transition-timing-function: ease-in;
+  -webkit-transition: all .3s ease;
+     -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+       -o-transition: all .3s ease;
+          transition: all .3s ease;
 }
 .soklink:hover {
   color: rgba(107, 114, 128, var(--tw-text-opacity));
-  transition-property: all;
-  transition-duration: .2s;
-  transition-timing-function: ease-in;
+  -webkit-transition: all .3s ease;
+     -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+       -o-transition: all .3s ease;
+          transition: all .3s ease;
 }
 .sok {
   padding: 40px 0;

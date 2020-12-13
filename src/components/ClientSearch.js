@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import * as JsSearch from "js-search"
+import { Card } from "."
 
 class ClientSearch extends Component {
   state = {
@@ -107,7 +108,7 @@ class ClientSearch extends Component {
   handleSubmit = e => {
     e.preventDefault()
   }
-  
+
   render() {
     const { searchResults, searchQuery } = this.state
     const { nodes } = this.props
@@ -129,9 +130,31 @@ class ClientSearch extends Component {
           </form>
           {queryResults.length > 0 && 
             <div>
-            Number of items:
+            <h1 style={{ textAlign: `center` }}>
+              Number of items:
             {queryResults.length}
-            <table
+            </h1>
+
+            <div className="container pt-6 overflow-hidden">
+              <div className="flex flex-wrap -mx-3 xl:-mx-6">
+                {queryResults.map((item, i) => (
+                  <div
+                    className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6"
+                    key={`card_${item.slug}`}
+                  >
+                    <Card
+                      {...item}
+                      navigation={{
+                        current: i,
+                        items: nodes.map((item) => `/${item.slug}`),
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* <table
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
@@ -211,7 +234,7 @@ class ClientSearch extends Component {
                   )
                 })}
               </tbody>
-            </table>
+            </table> */}
           </div>
           }
         </div>

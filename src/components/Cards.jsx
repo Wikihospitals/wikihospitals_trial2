@@ -23,7 +23,6 @@ export const Cards = (props) => {
           </div>
         ))}
       </div>
-      
     </div>
   )
 }

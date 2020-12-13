@@ -17,7 +17,7 @@ const SearchTemplate = props => {
         description="A site that displays the latest in international health technology along with blog posts about patients stories."
       />
 
-      <h1 style={{ marginTop: `3em`, textAlign: `center` }}>
+      <h1 style={{ marginLeft: `10px`, marginTop: `3em`, textAlign: `center` }}>
         General search
       </h1>
       
