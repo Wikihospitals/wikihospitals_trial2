@@ -34,7 +34,7 @@ export default (props) => {
               <div className="flex flex-wrap -mx-3 xl:-mx-6">
                 <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6 text-right">
                     {!isFirst && (
-                      <Link to={`/${prevPage}`} rel="prev">
+                      <Link to={`${(prevPage==="/" ? prevPage : "/page/" + prevPage)}`} rel="prev">
                           ← Previous Page
                       </Link>
                   )}
@@ -44,7 +44,7 @@ export default (props) => {
                 </div>
                 <div className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6 sm:text-left">
                 {!isLast && (
-                      <Link to={`/${nextPage}`} rel="next">
+                      <Link to={`/page/${nextPage}`} rel="next">
                           Next Page →
                       </Link>
                   )}
