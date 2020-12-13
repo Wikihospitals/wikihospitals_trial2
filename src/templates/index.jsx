@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { Cards, SiteMetadata } from "../components"
 import { Layout } from "../layouts/Layout"
 import { Link } from 'gatsby'
+import 'lazysizes';
 
 export default (props) => {
 

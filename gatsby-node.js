@@ -4,7 +4,7 @@ const { AIRTABLE_TABLE_NAME: tableName } = process.env
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-
+  
   return new Promise((resolve, reject) => {
     graphql(`
       {
@@ -14,6 +14,9 @@ exports.createPages = ({ graphql, actions }) => {
               slug
               name : Company_title
               description : Description
+              image {
+                url
+              }
             }
           }
         }

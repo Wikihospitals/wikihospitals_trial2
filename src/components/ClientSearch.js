@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import * as JsSearch from "js-search"
-import { Card } from "."
+import { Scard } from "."
 
 class ClientSearch extends Component {
   state = {
@@ -132,7 +132,7 @@ class ClientSearch extends Component {
             <div>
             <h1 style={{ textAlign: `center` }}>
               Number of items:
-            {queryResults.length}
+              {queryResults.length}
             </h1>
 
             <div className="container pt-6 overflow-hidden">
@@ -142,7 +142,7 @@ class ClientSearch extends Component {
                     className="w-full sm:w-1/2 xl:w-1/3 px-3 xl:px-6 py-6"
                     key={`card_${item.slug}`}
                   >
-                    <Card
+                    <Scard
                       {...item}
                       navigation={{
                         current: i,

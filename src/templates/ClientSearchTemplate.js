@@ -2,6 +2,7 @@ import React from "react"
 import ClientSearch from "../components/ClientSearch"
 import { SiteMetadata } from "../components"
 import { Layout } from "../layouts/Layout"
+import 'lazysizes';
 
 const SearchTemplate = props => {
 
