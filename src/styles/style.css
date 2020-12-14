@@ -52,7 +52,7 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   transition: all 0.3s ease;
 }
 .csok {
-  min-height: 500px;
+  min-height: 1000px;
 }
 .sok {
   padding: 40px 0;
@@ -84,6 +84,12 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   background: #fff;
   box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.2);
 }
+.filterc0 {
+  z-index: 9001;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
 .filterc1 {
   z-index: 9000;
   position: relative;
@@ -91,12 +97,24 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   margin: 0 auto;
 }
 .filterc2 {
-  z-index: 900;
+  z-index: 901;
   position: relative;
   width: 80%;
   margin: 0 auto;
 }
 .filterc3 {
+  z-index: 900;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.filterc4 {
+  z-index: 91;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.filterc5 {
   z-index: 90;
   position: relative;
   width: 80%;

@@ -175,7 +175,7 @@ class ClientSearch extends Component {
 
             <div className="flex flex-wrap">
               <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
-                <div className="filterc1">
+                <div className="filterc0">
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Medical specialty
                   </h4>
@@ -202,7 +202,7 @@ class ClientSearch extends Component {
               </div>
 
               <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
-                <div className="filterc2">
+                <div className="filterc3">
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Product type
                   </h4>
@@ -211,7 +211,7 @@ class ClientSearch extends Component {
               </div>
 
               <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
-                <div className="filterc3">
+                <div className="filterc4">
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Intended customer
                   </h4>
@@ -220,7 +220,7 @@ class ClientSearch extends Component {
               </div>
 
               <div className="w-full lg:w-1/2 lg:pl-4 pb-4">
-                <div className="filterc3">
+                <div className="filterc5">
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Country of origin
                   </h4>
