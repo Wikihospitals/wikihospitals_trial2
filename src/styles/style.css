@@ -58,6 +58,10 @@ body.ReactModal__Body--open > div[aria-hidden="true"] {
   padding: 40px 0;
   text-align: center;
 }
+.sokMsg {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+}
 .form-input {
   position: relative;
   margin: 0 auto;

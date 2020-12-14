@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import * as JsSearch from "js-search"
 import { Scard } from "."
 import SingleSelect from "../components/SingleSelect"
+import Select from "react-select"
 
 class ClientSearch extends Component {
   state = {
@@ -22,8 +23,14 @@ class ClientSearch extends Component {
     searchQuery: "",
     selectedStrategy: "",
     selectedSanitizer: "",
-    filterValue: "",
+    msFiltervalue: "",
+    mdFiltervalue: "",
+    teFiltervalue: "",
+    pdFiltervalue: "",
+    cmFiltervalue: "",
+    cnFiltervalue: "",
   }
+
   /**
    * React lifecycle method that will inject the data into the state.
    */
@@ -47,7 +54,6 @@ class ClientSearch extends Component {
     return null
   }
   async componentDidMount() {
-    console.log(1)
     this.rebuildIndex()
   }
 
@@ -68,6 +74,7 @@ class ClientSearch extends Component {
       indexByPD,
       indexByCM,
       indexByCN,
+      msFiltervalue,
     } = this.state
     const { nodes } = this.props
 
@@ -145,8 +152,9 @@ class ClientSearch extends Component {
    * in which the results will be added to the state
    */
   searchData = (e) => {
-    const { search } = this.state
-    const queryResult = search.search(e.target.value)
+    const { search, msFiltervalue } = this.state
+    const keyword = msFiltervalue === "" ? "" : msFiltervalue + ","
+    const queryResult = search.search(keyword + e.target.value)
     this.setState({ searchQuery: e.target.value, searchResults: queryResult })
   }
 
@@ -154,8 +162,222 @@ class ClientSearch extends Component {
     e.preventDefault()
   }
 
+  handleMSChange(e) {
+    const {
+      search,
+      searchQuery,
+      mdFiltervalue,
+      teFiltervalue,
+      pdFiltervalue,
+      cmFiltervalue,
+      cnFiltervalue,
+    } = this.state
+
+    const keyword = e ? (e.value === "" ? "" : e.value + ",") : ""
+    const mdkeyword = mdFiltervalue === "" ? "" : mdFiltervalue + ","
+    const tekeyword = teFiltervalue === "" ? "" : teFiltervalue + ","
+    const pdkeyword = pdFiltervalue === "" ? "" : pdFiltervalue + ","
+    const cmkeyword = cmFiltervalue === "" ? "" : cmFiltervalue + ","
+    const cnkeyword = cnFiltervalue === "" ? "" : cnFiltervalue + ","
+
+    const queryResult = search.search(
+      keyword +
+        mdkeyword +
+        tekeyword +
+        pdkeyword +
+        cmkeyword +
+        cnkeyword +
+        searchQuery
+    )
+
+    this.setState({
+      msFiltervalue: e ? e.value : "",
+      searchQuery: searchQuery,
+      searchResults: queryResult,
+    })
+  }
+
+  handleMDChange(e) {
+    const {
+      search,
+      searchQuery,
+      msFiltervalue,
+      teFiltervalue,
+      pdFiltervalue,
+      cmFiltervalue,
+      cnFiltervalue,
+    } = this.state
+
+    const keyword = e ? (e.value === "" ? "" : e.value + ",") : ""
+    const mskeyword = msFiltervalue === "" ? "" : msFiltervalue + ","
+    const tekeyword = teFiltervalue === "" ? "" : teFiltervalue + ","
+    const pdkeyword = pdFiltervalue === "" ? "" : pdFiltervalue + ","
+    const cmkeyword = cmFiltervalue === "" ? "" : cmFiltervalue + ","
+    const cnkeyword = cnFiltervalue === "" ? "" : cnFiltervalue + ","
+
+    const queryResult = search.search(
+      keyword +
+        mskeyword +
+        tekeyword +
+        pdkeyword +
+        cmkeyword +
+        cnkeyword +
+        searchQuery
+    )
+    this.setState({
+      mdFiltervalue: e ? e.value : "",
+      searchQuery: searchQuery,
+      searchResults: queryResult,
+    })
+  }
+
+  handleTEChange(e) {
+    const {
+      search,
+      searchQuery,
+      msFiltervalue,
+      mdFiltervalue,
+      pdFiltervalue,
+      cmFiltervalue,
+      cnFiltervalue,
+    } = this.state
+
+    const keyword = e ? (e.value === "" ? "" : e.value + ",") : ""
+    const mskeyword = msFiltervalue === "" ? "" : msFiltervalue + ","
+    const mdkeyword = mdFiltervalue === "" ? "" : mdFiltervalue + ","
+    const pdkeyword = pdFiltervalue === "" ? "" : pdFiltervalue + ","
+    const cmkeyword = cmFiltervalue === "" ? "" : cmFiltervalue + ","
+    const cnkeyword = cnFiltervalue === "" ? "" : cnFiltervalue + ","
+
+    const queryResult = search.search(
+      keyword +
+        mskeyword +
+        mdkeyword +
+        pdkeyword +
+        cmkeyword +
+        cnkeyword +
+        searchQuery
+    )
+    this.setState({
+      teFiltervalue: e ? e.value : "",
+      searchQuery: searchQuery,
+      searchResults: queryResult,
+    })
+  }
+
+  handlePDChange(e) {
+    const {
+      search,
+      searchQuery,
+      msFiltervalue,
+      mdFiltervalue,
+      teFiltervalue,
+      cmFiltervalue,
+      cnFiltervalue,
+    } = this.state
+
+    const keyword = e ? (e.value === "" ? "" : e.value + ",") : ""
+    const mskeyword = msFiltervalue === "" ? "" : msFiltervalue + ","
+    const mdkeyword = mdFiltervalue === "" ? "" : mdFiltervalue + ","
+    const tekeyword = teFiltervalue === "" ? "" : teFiltervalue + ","
+    const cmkeyword = cmFiltervalue === "" ? "" : cmFiltervalue + ","
+    const cnkeyword = cnFiltervalue === "" ? "" : cnFiltervalue + ","
+
+    const queryResult = search.search(
+      keyword +
+        mskeyword +
+        mdkeyword +
+        tekeyword +
+        cmkeyword +
+        cnkeyword +
+        searchQuery
+    )
+    this.setState({
+      pdFiltervalue: e ? e.value : "",
+      searchQuery: searchQuery,
+      searchResults: queryResult,
+    })
+  }
+
+  handleCMChange(e) {
+    const {
+      search,
+      searchQuery,
+      msFiltervalue,
+      mdFiltervalue,
+      teFiltervalue,
+      pdFiltervalue,
+      cnFiltervalue,
+    } = this.state
+
+    const keyword = e ? (e.value === "" ? "" : e.value + ",") : ""
+    const mskeyword = msFiltervalue === "" ? "" : msFiltervalue + ","
+    const mdkeyword = mdFiltervalue === "" ? "" : mdFiltervalue + ","
+    const tekeyword = teFiltervalue === "" ? "" : teFiltervalue + ","
+    const pdkeyword = pdFiltervalue === "" ? "" : pdFiltervalue + ","
+    const cnkeyword = cnFiltervalue === "" ? "" : cnFiltervalue + ","
+
+    const queryResult = search.search(
+      keyword +
+        mskeyword +
+        mdkeyword +
+        tekeyword +
+        pdkeyword +
+        cnkeyword +
+        searchQuery
+    )
+    this.setState({
+      cmFiltervalue: e ? e.value : "",
+      searchQuery: searchQuery,
+      searchResults: queryResult,
+    })
+  }
+
+  handleCNChange(e) {
+    const {
+      search,
+      searchQuery,
+      msFiltervalue,
+      mdFiltervalue,
+      teFiltervalue,
+      pdFiltervalue,
+      cmFiltervalue,
+    } = this.state
+
+    const keyword = e ? (e.value === "" ? "" : e.value + ",") : ""
+    const mskeyword = msFiltervalue === "" ? "" : msFiltervalue + ","
+    const mdkeyword = mdFiltervalue === "" ? "" : mdFiltervalue + ","
+    const tekeyword = teFiltervalue === "" ? "" : teFiltervalue + ","
+    const pdkeyword = pdFiltervalue === "" ? "" : pdFiltervalue + ","
+    const cmkeyword = cmFiltervalue === "" ? "" : cmFiltervalue + ","
+
+    const queryResult = search.search(
+      keyword +
+        mskeyword +
+        mdkeyword +
+        tekeyword +
+        pdkeyword +
+        cmkeyword +
+        searchQuery
+    )
+    this.setState({
+      cnFiltervalue: e ? e.value : "",
+      searchQuery: searchQuery,
+      searchResults: queryResult,
+    })
+  }
+
   render() {
-    const { searchResults, searchQuery } = this.state
+    const {
+      searchResults,
+      searchQuery,
+      msFiltervalue,
+      mdFiltervalue,
+      teFiltervalue,
+      pdFiltervalue,
+      cmFiltervalue,
+      cnFiltervalue,
+    } = this.state
     const { nodes, ms, md, te, pd, cm, cn } = this.props
     const queryResults = searchQuery === "" ? [] : searchResults
 
@@ -179,7 +401,15 @@ class ClientSearch extends Component {
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Medical specialty
                   </h4>
-                  <SingleSelect options={ms} />
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isClearable
+                    isSearchable
+                    name="ms"
+                    options={ms}
+                    onChange={this.handleMSChange.bind(this)}
+                  />
                 </div>
               </div>
 
@@ -188,7 +418,15 @@ class ClientSearch extends Component {
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Major disease
                   </h4>
-                  <SingleSelect options={md} />
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isClearable
+                    isSearchable
+                    name="md"
+                    options={md}
+                    onChange={this.handleMDChange.bind(this)}
+                  />
                 </div>
               </div>
 
@@ -197,7 +435,15 @@ class ClientSearch extends Component {
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Technology used
                   </h4>
-                  <SingleSelect options={te} />
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isClearable
+                    isSearchable
+                    name="te"
+                    options={te}
+                    onChange={this.handleTEChange.bind(this)}
+                  />
                 </div>
               </div>
 
@@ -206,7 +452,15 @@ class ClientSearch extends Component {
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Product type
                   </h4>
-                  <SingleSelect options={pd} />
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isClearable
+                    isSearchable
+                    name="pd"
+                    options={pd}
+                    onChange={this.handlePDChange.bind(this)}
+                  />
                 </div>
               </div>
 
@@ -215,7 +469,16 @@ class ClientSearch extends Component {
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Intended customer
                   </h4>
-                  <SingleSelect options={cm} />
+
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isClearable
+                    isSearchable
+                    name="cm"
+                    options={cm}
+                    onChange={this.handleCMChange.bind(this)}
+                  />
                 </div>
               </div>
 
@@ -224,17 +487,71 @@ class ClientSearch extends Component {
                   <h4 className="text-blue-800 dark:text-blue-400 uppercase text-base tracking-wide font-medium pb-px">
                     Country of origin
                   </h4>
-                  <SingleSelect options={cn} />
+
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isClearable
+                    isSearchable
+                    name="cn"
+                    options={cn}
+                    onChange={this.handleCNChange.bind(this)}
+                  />
                 </div>
               </div>
+
+              {/* <div className="w-full lg:pl-4 pb-4">
+                <button
+                  type="button"
+                  onClick={this.goSearch}
+                >Search</button>
+              </div> */}
             </div>
           </form>
           {queryResults.length > 0 && (
             <div>
-              <h1 style={{ textAlign: `center` }}>
-                Number of items:
-                {queryResults.length}
-              </h1>
+              <div className="w-full lg:py-4 sokMsg">
+                <h1 style={{ textAlign: `center` }}>
+                  Number of items:
+                  {queryResults.length}
+                </h1>
+
+                {msFiltervalue && (
+                  <h1 style={{ textAlign: `center` }}>
+                    Medical specialty : {msFiltervalue}
+                  </h1>
+                )}
+
+                {mdFiltervalue && (
+                  <h1 style={{ textAlign: `center` }}>
+                    Major disease : {mdFiltervalue}
+                  </h1>
+                )}
+
+                {teFiltervalue && (
+                  <h1 style={{ textAlign: `center` }}>
+                    Technology used : {teFiltervalue}
+                  </h1>
+                )}
+
+                {pdFiltervalue && (
+                  <h1 style={{ textAlign: `center` }}>
+                    Product type : {pdFiltervalue}
+                  </h1>
+                )}
+
+                {cmFiltervalue && (
+                  <h1 style={{ textAlign: `center` }}>
+                    Intended customer : {cmFiltervalue}
+                  </h1>
+                )}
+
+                {cnFiltervalue && (
+                  <h1 style={{ textAlign: `center` }}>
+                    Country of origin : {cnFiltervalue}
+                  </h1>
+                )}
+              </div>
 
               <div className="container pt-6 overflow-hidden">
                 <div className="flex flex-wrap -mx-3 xl:-mx-6">
